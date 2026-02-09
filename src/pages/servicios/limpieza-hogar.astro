@@ -1,0 +1,398 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+
+// Process steps for home cleaning
+const processSteps = [
+  {
+    number: 1,
+    title: "Primera Visita",
+    description: "Visitamos tu hogar para conocer tus necesidades específicas y preferencias de limpieza.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>`
+  },
+  {
+    number: 2,
+    title: "Plan Personalizado",
+    description: "Diseñamos un programa de limpieza adaptado a tu estilo de vida y horarios familiares.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>`
+  },
+  {
+    number: 3,
+    title: "Limpieza Regular",
+    description: "Ejecutamos el servicio con personal de confianza, utilizando tus productos preferidos o los nuestros.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>`
+  },
+  {
+    number: 4,
+    title: "Tu Hogar Perfecto",
+    description: "Mantén tu hogar siempre impecable sin preocupaciones, con la confianza de un servicio profesional.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>`
+  }
+];
+
+// FAQs specific to home cleaning
+const faqs = [
+  {
+    question: "¿Puedo confiar en que respetarán mi hogar y mis pertenencias?",
+    answer: "Absolutamente. Todo nuestro personal pasa controles rigurosos de seguridad y tiene años de experiencia. Trabajamos con total respeto por tu hogar y pertenencias. Estamos completamente asegurados y nuestros empleados son de total confianza. Muchas familias nos confían las llaves de su hogar."
+  },
+  {
+    question: "¿Qué incluye exactamente el servicio de limpieza del hogar?",
+    answer: "Incluye: limpieza y orden de todas las habitaciones, aspirado y fregado de suelos, limpieza de baños completa, cocina (incluyendo electrodomésticos), cambio de sábanas, limpieza de cristales interiores, polvo de muebles y superficies. Podemos adaptarlo completamente a tus necesidades específicas."
+  },
+  {
+    question: "¿Proporcionan los productos de limpieza o uso los míos?",
+    answer: "Como prefieras. Podemos traer nuestros productos profesionales de alta calidad y respetuosos con el medio ambiente, o usar tus productos preferidos si tienes marcas específicas. También respetamos cualquier alergia o sensibilidad que tengas o tu familia."
+  },
+  {
+    question: "¿Qué frecuencias de limpieza ofrecen?",
+    answer: "Ofrecemos máxima flexibilidad: semanal, quincenal, mensual, o la frecuencia que mejor se adapte a tu estilo de vida. También servicios puntuales para ocasiones especiales, eventos familiares, o cuando simplemente necesites un extra de ayuda en casa."
+  }
+];
+
+// Testimonial for this service
+const testimonial = {
+  name: "Laura Martínez",
+  company: "Familia con 3 hijos",
+  testimonial: "Desde que tenemos el servicio de limpieza del hogar de Limpiezas Jiménez, mi vida ha cambiado. Puedo dedicar mi tiempo libre a la familia en lugar de limpiar. Son súper cuidadosas y mi casa siempre está perfecta.",
+  avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face",
+  rating: 5
+};
+---
+
+<Layout 
+  title="Limpieza del Hogar Madrid - Servicio Doméstico Profesional | Limpiezas Jiménez"
+  description="Servicio profesional de limpieza del hogar en Madrid. Tu casa siempre perfecta sin preocupaciones. Personal de confianza y horarios flexibles. Presupuesto gratis."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-brand-primary to-brand-accent py-32">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop" 
+        alt="Limpieza del hogar profesional"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-brand-primary/85"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Limpieza del<br />
+          <span class="text-white/90">Hogar</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Servicio doméstico personalizado. Tu hogar siempre perfecto sin que tengas que preocuparte de nada.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contacto"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-primary font-bold text-lg rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+          >
+            Solicitar presupuesto gratuito
+          </a>
+          
+          <a 
+            href="tel:+34912345678"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-brand-primary transition-all duration-300"
+          >
+            912 345 678
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Description -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">
+            Más Tiempo para lo que Realmente Importa
+          </h2>
+          
+          <div class="space-y-6 text-secondary text-lg leading-relaxed">
+            <p>
+              Tu tiempo es valioso y debe dedicarse a lo que realmente importa: <strong>tu familia, tu trabajo, 
+              tus aficiones</strong>. En Limpiezas Jiménez entendemos que mantener un hogar perfecto requiere tiempo 
+              y esfuerzo que muchas veces no tienes.
+            </p>
+            
+            <p>
+              Nuestro servicio de <strong>limpieza doméstica personalizada</strong> está diseñado para adaptarse 
+              completamente a tu estilo de vida. No es solo limpiar, es <strong>cuidar tu hogar</strong> con el mismo 
+              esmero que lo harías tú, pero con la experiencia profesional de más de 15 años.
+            </p>
+            
+            <p>
+              Trabajamos con <strong>personal de absoluta confianza</strong>, verificado y asegurado, que respeta tu 
+              intimidad y tus pertenencias. Muchas familias en Madrid ya nos confían las llaves de su hogar.
+            </p>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1564540574859-0dfb63985953?w=800&h=600&fit=crop" 
+            alt="Hogar limpio y acogedor"
+            class="rounded-lg shadow-lg"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-brand-primary text-white p-6 rounded-lg shadow-lg">
+            <div class="text-3xl font-bold">150+</div>
+            <div class="text-sm">Familias nos confían su hogar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          ¿Qué incluye nuestro servicio personalizado?
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Adaptamos cada servicio a las necesidades específicas de tu hogar y familia
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Todas las Habitaciones</h3>
+          <p class="text-secondary">Limpieza completa de dormitorios, salón, comedor y todas las estancias de tu hogar.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Cocina Completa</h3>
+          <p class="text-secondary">Limpieza de encimeras, electrodomésticos, armarios exteriores, fregadero y suelos.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M10.5 4L12 2l1.5 2M10.5 4H6.75a.75.75 0 00-.75.75v4.5c0 .415.336.75.75.75h10.5a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75H13.5m-3 0v2.25"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Baños Impecables</h3>
+          <p class="text-secondary">Desinfección completa, limpieza de azulejos, sanitarios y reposición de toallas.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Suelos Perfectos</h3>
+          <p class="text-secondary">Aspirado y fregado de todo tipo de suelos: parquet, baldosa, mármol, tarima.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Cristales y Ventanas</h3>
+          <p class="text-secondary">Limpieza de cristales interiores, espejos y superficies acristaladas de tu hogar.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 4h.01M9 12h.01m4-.01h.01m2 0h.01M9 16h.01m4-.01h.01m2 0h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Servicios Extra</h3>
+          <p class="text-secondary">Cambio de sábanas, orden general, limpieza interior nevera, planchado básico (opcional).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <ProcessSteps 
+    title="Nuestro Proceso Personalizado"
+    subtitle="Diseñado para adaptarse completamente a tu estilo de vida y necesidades"
+    steps={processSteps} 
+  />
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Beneficios de nuestro servicio
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Mucho más que limpieza: calidad de vida para ti y tu familia
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Tiempo Libre</h3>
+            <p class="text-secondary text-sm">Recupera horas para dedicar a tu familia, aficiones y descanso.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Total Confianza</h3>
+            <p class="text-secondary text-sm">Personal verificado, asegurado y con años de experiencia en hogares.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Ambiente Saludable</h3>
+            <p class="text-secondary text-sm">Hogar más higiénico y saludable para toda la familia, especialmente niños.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Flexibilidad Total</h3>
+            <p class="text-secondary text-sm">Horarios y servicios completamente adaptables a tus necesidades.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Planes Flexibles
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Elige la frecuencia y servicios que mejor se adapten a tu familia
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Servicio Semanal</h3>
+          <p class="text-muted mb-6">Hogar siempre perfecto</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 65€</div>
+          <p class="text-sm text-secondary mb-6">Por servicio</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Una vez por semana</li>
+            <li>✓ Limpieza completa</li>
+            <li>✓ 2-3 horas por visita</li>
+            <li>✓ Personal fijo</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-brand-primary relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+            Más Popular
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-4">Servicio Quincenal</h3>
+          <p class="text-muted mb-6">Equilibrio perfecto</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 85€</div>
+          <p class="text-sm text-secondary mb-6">Por servicio</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Cada 2 semanas</li>
+            <li>✓ Limpieza profunda</li>
+            <li>✓ 3-4 horas por visita</li>
+            <li>✓ Servicios extras incluidos</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Servicio Mensual</h3>
+          <p class="text-muted mb-6">Mantenimiento básico</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 120€</div>
+          <p class="text-sm text-secondary mb-6">Por servicio</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Una vez al mes</li>
+            <li>✓ Limpieza general completa</li>
+            <li>✓ 4-5 horas por visita</li>
+            <li>✓ Ideal para mantenimiento</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-muted mb-6">
+          * Precios orientativos para viviendas de 80-120m². El precio final depende del tamaño y servicios específicos.
+        </p>
+        <a 
+          href="/contacto"
+          class="inline-flex items-center justify-center px-8 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+        >
+          Solicitar presupuesto personalizado
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQAccordion faqs={faqs} />
+
+  <!-- Testimonial Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Lo que dicen las familias
+        </h2>
+      </div>
+      
+      <TestimonialCard {...testimonial} />
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner 
+    title="¿Listo para recuperar tu tiempo libre?"
+    subtitle="Confía en nosotros el cuidado de tu hogar y dedícate a lo que realmente importa"
+    buttonText="Solicitar servicio para mi hogar"
+    buttonLink="/contacto"
+    bgColor="bg-brand-primary"
+  />
+</Layout>

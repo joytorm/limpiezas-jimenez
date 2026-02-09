@@ -1,0 +1,75 @@
+---
+export interface Step {
+  number: number;
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  steps: Step[];
+}
+
+const { 
+  title = "¿Cómo trabajamos?",
+  subtitle = "Nuestro proceso garantiza resultados excepcionales en cada servicio",
+  steps 
+} = Astro.props;
+---
+
+<section class="py-16 bg-bg-secondary">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+        {title}
+      </h2>
+      <p class="text-xl text-secondary max-w-3xl mx-auto">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="relative">
+      <!-- Desktop timeline line -->
+      <div class="hidden lg:block absolute top-20 left-0 w-full h-0.5 bg-border"></div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {steps.map((step, index) => (
+          <div class="relative group">
+            <!-- Step number circle -->
+            <div class="flex justify-center mb-6">
+              <div class="relative">
+                <div class="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  {step.number}
+                </div>
+                <!-- Connector line for mobile/tablet -->
+                {index < steps.length - 1 && (
+                  <div class="lg:hidden absolute top-16 left-1/2 w-0.5 h-8 bg-border transform -translate-x-1/2"></div>
+                )}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="text-center px-4">
+              <!-- Icon -->
+              <div class="inline-flex items-center justify-center w-12 h-12 bg-white rounded-lg shadow mb-4 group-hover:bg-brand-primary/10 transition-colors duration-300">
+                <div class="w-6 h-6 text-brand-primary" set:html={step.icon}></div>
+              </div>
+              
+              <h3 class="text-xl font-semibold text-primary mb-3 group-hover:text-brand-primary transition-colors duration-300">
+                {step.title}
+              </h3>
+              
+              <p class="text-secondary leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

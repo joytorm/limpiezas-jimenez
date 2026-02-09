@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  /* Mint Clean Color Palette */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F0FDF9;
+  --color-brand-primary: #0D9488;
+  --color-brand-accent: #10B981;
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94A3B8;
+  --color-border: #E2E8F0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Tailwind utilities */
+@layer utilities {
+  .text-brand-primary {
+    color: var(--color-brand-primary);
+  }
+  .text-brand-accent {
+    color: var(--color-brand-accent);
+  }
+  .text-primary {
+    color: var(--color-text-primary);
+  }
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+  .bg-brand-primary {
+    background-color: var(--color-brand-primary);
+  }
+  .bg-brand-accent {
+    background-color: var(--color-brand-accent);
+  }
+  .bg-secondary {
+    background-color: var(--color-bg-secondary);
+  }
+  .border-default {
+    border-color: var(--color-border);
+  }
+}

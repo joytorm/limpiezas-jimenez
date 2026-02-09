@@ -1,0 +1,76 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  link: string;
+  image?: string;
+  features?: string[];
+  price?: string;
+}
+
+const { title, description, icon, link, image, features, price } = Astro.props;
+---
+
+<div class="group bg-white rounded-lg shadow-lg border border-default overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+  {image && (
+    <div class="relative h-48 overflow-hidden">
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        loading="lazy"
+      />
+      <div class="absolute inset-0 bg-brand-primary/10 group-hover:bg-brand-primary/20 transition-colors duration-300"></div>
+    </div>
+  )}
+  
+  <div class="p-6">
+    <!-- Icon -->
+    <div class="inline-flex items-center justify-center w-12 h-12 bg-bg-secondary rounded-lg mb-4 group-hover:bg-brand-primary/10 transition-colors duration-300">
+      <div class="w-6 h-6 text-brand-primary" set:html={icon}></div>
+    </div>
+    
+    <!-- Title -->
+    <h3 class="text-xl font-semibold text-primary mb-3 group-hover:text-brand-primary transition-colors duration-300">
+      {title}
+    </h3>
+    
+    <!-- Description -->
+    <p class="text-secondary text-sm mb-4 leading-relaxed">
+      {description}
+    </p>
+    
+    <!-- Features -->
+    {features && features.length > 0 && (
+      <ul class="space-y-1 mb-4">
+        {features.slice(0, 3).map(feature => (
+          <li class="flex items-center text-sm text-secondary">
+            <svg class="w-4 h-4 text-brand-accent mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+    
+    <!-- Price -->
+    {price && (
+      <div class="mb-4">
+        <span class="text-brand-primary font-semibold text-lg">{price}</span>
+      </div>
+    )}
+    
+    <!-- CTA -->
+    <a 
+      href={link}
+      class="inline-flex items-center text-brand-primary font-medium hover:text-brand-accent transition-colors group"
+    >
+      <span>Ver más detalles</span>
+      <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+</div>

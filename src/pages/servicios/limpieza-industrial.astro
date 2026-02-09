@@ -1,0 +1,399 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+
+// Process steps for industrial cleaning
+const processSteps = [
+  {
+    number: 1,
+    title: "Análisis Técnico",
+    description: "Evaluamos las necesidades específicas de tu instalación, tipo de residuos, maquinaria y protocolos de seguridad.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 4h.01M9 12h.01m4-.01h.01m2 0h.01M9 16h.01m4-.01h.01m2 0h.01"></path></svg>`
+  },
+  {
+    number: 2,
+    title: "Plan Industrial Específico",
+    description: "Diseñamos un protocolo especializado con equipamiento industrial y horarios que no interfieran con la producción.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>`
+  },
+  {
+    number: 3,
+    title: "Ejecución Especializada",
+    description: "Limpieza con maquinaria industrial, personal especializado y cumplimiento estricto de normativas de seguridad.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>`
+  },
+  {
+    number: 4,
+    title: "Control y Mejora Continua",
+    description: "Supervisión constante, informes de calidad y optimización continua de procesos para máxima eficiencia.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>`
+  }
+];
+
+// FAQs specific to industrial cleaning
+const faqs = [
+  {
+    question: "¿Están preparados para trabajar en entornos industriales complejos?",
+    answer: "Sí, tenemos más de 15 años de experiencia en limpieza industrial. Nuestro equipo está formado específicamente para trabajar en naves industriales, almacenes, centros logísticos y espacios de gran volumen. Conocemos las normativas de seguridad industrial y disponemos de maquinaria especializada."
+  },
+  {
+    question: "¿Pueden trabajar sin interrumpir la actividad productiva?",
+    answer: "Absolutamente. Planificamos nuestros servicios para adaptarnos a vuestros horarios de producción. Podemos trabajar en turnos nocturnos, fines de semana, o durante paradas programadas. Coordinamos estrechamente con vuestro equipo de producción para minimizar cualquier interferencia."
+  },
+  {
+    question: "¿Qué tipo de maquinaria y productos utilizan?",
+    answer: "Disponemos de equipamiento industrial de última generación: barredoras automáticas, fregadoras industriales, aspiradoras de alto rendimiento, equipos de limpieza a alta presión y sistemas de desengrasado. Utilizamos productos específicos para cada tipo de suciedad e industria."
+  },
+  {
+    question: "¿Gestionan residuos especiales o peligrosos?",
+    answer: "Trabajamos con gestores autorizados para todo tipo de residuos industriales. Nos encargamos de la correcta clasificación, almacenamiento temporal y gestión documental de residuos según la normativa vigente. Tenemos experiencia con residuos especiales de diferentes sectores industriales."
+  }
+];
+
+// Testimonial for this service
+const testimonial = {
+  name: "Miguel Ángel Ruiz",
+  company: "Director de Operaciones, Logística Madrid Norte",
+  testimonial: "Limpiezas Jiménez mantiene nuestro centro logístico de 15.000m² en perfectas condiciones. Trabajan de noche sin interferir con nuestras operaciones y la limpieza es siempre impecable. Son verdaderos profesionales del sector industrial.",
+  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+  rating: 5
+};
+---
+
+<Layout 
+  title="Limpieza Industrial Madrid - Naves y Almacenes | Limpiezas Jiménez"
+  description="Servicio especializado de limpieza industrial en Madrid. Naves, almacenes y grandes superficies. Equipamiento profesional de última generación. Presupuesto gratis."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-brand-primary to-brand-accent py-32">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=1920&h=1080&fit=crop" 
+        alt="Limpieza industrial profesional"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-brand-primary/85"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Limpieza<br />
+          <span class="text-white/90">Industrial</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Limpieza especializada para naves industriales, almacenes y grandes superficies. Equipamiento profesional de última generación.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contacto"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-primary font-bold text-lg rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+          >
+            Solicitar presupuesto gratuito
+          </a>
+          
+          <a 
+            href="tel:+34912345678"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-brand-primary transition-all duration-300"
+          >
+            912 345 678
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Description -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">
+            Especialistas en Grandes Espacios
+          </h2>
+          
+          <div class="space-y-6 text-secondary text-lg leading-relaxed">
+            <p>
+              La <strong>limpieza industrial</strong> requiere conocimientos específicos, equipamiento especializado 
+              y experiencia en entornos complejos. En Limpiezas Jiménez somos expertos en mantener 
+              <strong>naves industriales, almacenes y centros logísticos</strong> en perfectas condiciones.
+            </p>
+            
+            <p>
+              Entendemos que cada instalación industrial tiene sus propios <strong>desafíos y requerimientos</strong>: 
+              horarios de producción, normativas específicas, tipos de residuos, áreas de acceso restringido. 
+              Nuestro enfoque es siempre personalizado y adaptado a vuestras necesidades operativas.
+            </p>
+            
+            <p>
+              Disponemos de <strong>maquinaria industrial de última generación</strong> y personal especializado 
+              que conoce los protocolos de seguridad industrial. Trabajamos con empresas de logística, 
+              manufactura, alimentación y otros sectores industriales en Madrid.
+            </p>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&h=600&fit=crop" 
+            alt="Nave industrial limpia"
+            class="rounded-lg shadow-lg"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-brand-primary text-white p-6 rounded-lg shadow-lg">
+            <div class="text-3xl font-bold">50+</div>
+            <div class="text-sm">Instalaciones industriales</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Servicios Industriales Especializados
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Soluciones completas para todo tipo de instalaciones industriales y logísticas
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Naves Industriales</h3>
+          <p class="text-secondary">Limpieza completa de naves de producción, manufactura y espacios industriales de gran superficie.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Almacenes y Logística</h3>
+          <p class="text-secondary">Mantenimiento de centros logísticos, almacenes automatizados y espacios de distribución.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Maquinaria y Equipos</h3>
+          <p class="text-secondary">Limpieza especializada de maquinaria industrial, líneas de producción y equipamiento técnico.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Suelos Industriales</h3>
+          <p class="text-secondary">Tratamiento especializado de pavimentos industriales: hormigón, resinas, antideslizantes.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Gestión de Residuos</h3>
+          <p class="text-secondary">Clasificación y gestión integral de residuos industriales según normativa específica del sector.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Áreas Especiales</h3>
+          <p class="text-secondary">Salas blancas, laboratorios, áreas con normativa específica y espacios con requerimientos especiales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <ProcessSteps 
+    title="Nuestro Proceso Industrial"
+    subtitle="Metodología especializada para instalaciones complejas y grandes superficies"
+    steps={processSteps} 
+  />
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Ventajas de nuestro servicio industrial
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Experiencia, tecnología y especialización para los mayores desafíos de limpieza
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Equipamiento Industrial</h3>
+            <p class="text-secondary text-sm">Maquinaria especializada para grandes superficies y espacios complejos.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Sin Interrupciones</h3>
+            <p class="text-secondary text-sm">Planificamos el servicio para no interferir en vuestra producción.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Normativa y Seguridad</h3>
+            <p class="text-secondary text-sm">Cumplimiento estricto de normativas industriales y protocolos de seguridad.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Informes y Control</h3>
+            <p class="text-secondary text-sm">Reportes detallados y control de calidad para optimización continua.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Tarifas Industriales
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Precios competitivos adaptados a la complejidad y tamaño de vuestras instalaciones
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Nave Estándar</h3>
+          <p class="text-muted mb-6">1.000-3.000m²</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 0,8€</div>
+          <p class="text-sm text-secondary mb-6">Por m²</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Limpieza básica industrial</li>
+            <li>✓ Barrido y fregado</li>
+            <li>✓ Gestión de residuos</li>
+            <li>✓ Servicio semanal/mensual</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-brand-primary relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+            Más Popular
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-4">Complejo Industrial</h3>
+          <p class="text-muted mb-6">3.000-10.000m²</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 0,6€</div>
+          <p class="text-sm text-secondary mb-6">Por m²</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Limpieza integral</li>
+            <li>✓ Maquinaria especializada</li>
+            <li>✓ Múltiples áreas</li>
+            <li>✓ Plan personalizado</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Gran Instalación</h3>
+          <p class="text-muted mb-6">Más de 10.000m²</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 0,4€</div>
+          <p class="text-sm text-secondary mb-6">Por m²</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Servicio especializado</li>
+            <li>✓ Equipo dedicado</li>
+            <li>✓ Gestión integral</li>
+            <li>✓ Contrato a medida</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-muted mb-6">
+          * Precios orientativos. El precio final depende de la complejidad, frecuencia y servicios específicos requeridos.
+        </p>
+        <a 
+          href="/contacto"
+          class="inline-flex items-center justify-center px-8 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+        >
+          Solicitar estudio personalizado
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQAccordion faqs={faqs} />
+
+  <!-- Testimonial Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Lo que dicen nuestros clientes industriales
+        </h2>
+      </div>
+      
+      <TestimonialCard {...testimonial} />
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner 
+    title="¿Tienes una instalación industrial que necesita limpieza especializada?"
+    subtitle="Confía en nuestros 15 años de experiencia en el sector industrial"
+    buttonText="Solicitar estudio para mi instalación"
+    buttonLink="/contacto"
+    bgColor="bg-brand-primary"
+  />
+</Layout>

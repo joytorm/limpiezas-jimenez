@@ -1,0 +1,398 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+
+// Process steps for office cleaning
+const processSteps = [
+  {
+    number: 1,
+    title: "Evaluación Inicial",
+    description: "Visitamos tu oficina para analizar el espacio, horarios de trabajo y necesidades específicas de limpieza.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 4h.01M9 12h.01m4-.01h.01m2 0h.01M9 16h.01m4-.01h.01m2 0h.01"></path></svg>`
+  },
+  {
+    number: 2,
+    title: "Plan Personalizado",
+    description: "Diseñamos un programa de limpieza adaptado a tu oficina, estableciendo horarios y protocolos específicos.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>`
+  },
+  {
+    number: 3,
+    title: "Limpieza Regular",
+    description: "Ejecutamos el servicio con personal cualificado y materiales profesionales, manteniendo la máxima discreción.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  },
+  {
+    number: 4,
+    title: "Control de Calidad",
+    description: "Supervisamos regularmente el servicio y realizamos inspecciones para garantizar los estándares más altos.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>`
+  }
+];
+
+// FAQs specific to office cleaning
+const faqs = [
+  {
+    question: "¿En qué horarios realizan la limpieza de oficinas?",
+    answer: "Nos adaptamos completamente a vuestros horarios de trabajo. Podemos realizar la limpieza antes del horario de oficina (muy temprano), después del horario laboral (por las tardes/noches) o durante los fines de semana. Nuestro objetivo es no interrumpir vuestra actividad empresarial."
+  },
+  {
+    question: "¿Qué incluye el servicio de limpieza de oficinas?",
+    answer: "Nuestro servicio incluye: limpieza y desinfección de escritorios, vaciado de papeleras, aspirado y fregado de suelos, limpieza de cristales interiores, desinfección de baños, limpieza de cocinas/office, ordenación general, y limpieza de zonas comunes. Todos los materiales y productos están incluidos."
+  },
+  {
+    question: "¿Proporcionan los productos y materiales de limpieza?",
+    answer: "Sí, incluimos todos los productos profesionales, materiales y equipamiento necesario. Utilizamos productos de alta calidad, respetuosos con el medio ambiente y seguros para la salud. Si tenéis preferencias específicas por ciertos productos, podemos adaptarnos."
+  },
+  {
+    question: "¿Cómo garantizan la seguridad y confidencialidad?",
+    answer: "Todo nuestro personal está asegurado, verificado y ha pasado controles de seguridad. Firmamos acuerdos de confidencialidad y respetamos estrictamente la privacidad de vuestro espacio de trabajo. Nuestros empleados son de total confianza y llevan años trabajando con nosotros."
+  }
+];
+
+// Testimonial for this service
+const testimonial = {
+  name: "Carlos Martín",
+  company: "Oficinas Martín & Asociados",
+  testimonial: "El servicio de limpieza de oficinas es extraordinario. Nuestro equipo trabaja en un ambiente mucho más agradable y productivo. Son muy profesionales y discretos. Recomendados al 100%.",
+  avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+  rating: 5
+};
+---
+
+<Layout 
+  title="Limpieza de Oficinas Madrid - Servicio Profesional | Limpiezas Jiménez"
+  description="Servicio profesional de limpieza de oficinas en Madrid. Mantén tu espacio de trabajo impecable y mejora la productividad de tu equipo. Presupuesto gratis."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-brand-primary to-brand-accent py-32">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop" 
+        alt="Limpieza de oficinas profesional"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-brand-primary/85"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Limpieza de Oficinas<br />
+          <span class="text-white/90">Profesional</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Mantén tu espacio de trabajo impecable y mejora la productividad de tu equipo con nuestro servicio profesional.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contacto"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-primary font-bold text-lg rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+          >
+            Solicitar presupuesto gratuito
+          </a>
+          
+          <a 
+            href="tel:+34912345678"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-brand-primary transition-all duration-300"
+          >
+            912 345 678
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Description -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">
+            Un Ambiente de Trabajo Impecable
+          </h2>
+          
+          <div class="space-y-6 text-secondary text-lg leading-relaxed">
+            <p>
+              Un espacio de trabajo limpio y ordenado no es solo una cuestión estética, es fundamental para la 
+              <strong>productividad y bienestar</strong> de tu equipo. En Limpiezas Jiménez entendemos que cada oficina 
+              tiene sus propias necesidades y horarios específicos.
+            </p>
+            
+            <p>
+              Nuestro servicio de limpieza de oficinas está diseñado para mantener vuestro espacio de trabajo en 
+              <strong>perfectas condiciones</strong> sin interferir en vuestra actividad empresarial. Trabajamos con 
+              horarios flexibles y nos adaptamos completamente a vuestras necesidades.
+            </p>
+            
+            <p>
+              Con más de 15 años de experiencia, hemos perfeccionado nuestros protocolos para ofrecer un servicio 
+              <strong>discreto, eficiente y de máxima calidad</strong> que contribuye al éxito de tu empresa.
+            </p>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop" 
+            alt="Oficina moderna y limpia"
+            class="rounded-lg shadow-lg"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-brand-primary text-white p-6 rounded-lg shadow-lg">
+            <div class="text-3xl font-bold">100+</div>
+            <div class="text-sm">Oficinas atendidas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          ¿Qué incluye nuestro servicio?
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Servicio completo e integral para mantener tu oficina en perfectas condiciones
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Escritorios y Mobiliario</h3>
+          <p class="text-secondary">Limpieza y desinfección completa de escritorios, sillas, estanterías y todo el mobiliario de oficina.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Suelos y Superficies</h3>
+          <p class="text-secondary">Aspirado y fregado profesional de todo tipo de suelos: parquet, baldosa, moqueta y superficies especiales.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Cristales y Ventanas</h3>
+          <p class="text-secondary">Limpieza interior de cristales, ventanas y mamparas para mantener la máxima luminosidad.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Gestión de Residuos</h3>
+          <p class="text-secondary">Vaciado y limpieza de papeleras, clasificación de residuos y reposición de bolsas.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M10.5 4L12 2l1.5 2M10.5 4H6.75a.75.75 0 00-.75.75v4.5c0 .415.336.75.75.75h10.5a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75H13.5m-3 0v2.25"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Baños y Aseos</h3>
+          <p class="text-secondary">Desinfección completa de sanitarios, reposición de consumibles (papel, jabón) y ambientadores.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Cocinas y Office</h3>
+          <p class="text-secondary">Limpieza de neveras, microondas, fregaderos y zonas de descanso con productos específicos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <ProcessSteps 
+    title="Nuestro Proceso de Trabajo"
+    subtitle="Metodología probada que garantiza resultados excepcionales en cada servicio"
+    steps={processSteps} 
+  />
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Beneficios de nuestro servicio
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Más que limpieza, ofrecemos valor añadido para tu empresa
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Mayor Productividad</h3>
+            <p class="text-secondary text-sm">Un ambiente limpio mejora la concentración y el rendimiento del equipo.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Imagen Profesional</h3>
+            <p class="text-secondary text-sm">Causa una excelente primera impresión en clientes y visitantes.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Ambiente Saludable</h3>
+            <p class="text-secondary text-sm">Reducimos bacterias y gérmenes, creando un entorno más saludable.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Ahorro de Tiempo</h3>
+            <p class="text-secondary text-sm">Tu equipo puede centrarse en lo importante mientras nosotros nos ocupamos del resto.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Precios Transparentes
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Tarifas competitivas adaptadas al tamaño y necesidades de tu oficina
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Oficina Pequeña</h3>
+          <p class="text-muted mb-6">Hasta 50m²</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 45€</div>
+          <p class="text-sm text-secondary mb-6">Por servicio</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ 1-3 despachos</li>
+            <li>✓ 1 baño</li>
+            <li>✓ Zona común</li>
+            <li>✓ Productos incluidos</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-brand-primary relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+            Más Popular
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-4">Oficina Mediana</h3>
+          <p class="text-muted mb-6">50-150m²</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 85€</div>
+          <p class="text-sm text-secondary mb-6">Por servicio</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ 4-8 despachos</li>
+            <li>✓ 2 baños</li>
+            <li>✓ Zona común + cocina</li>
+            <li>✓ Productos incluidos</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Oficina Grande</h3>
+          <p class="text-muted mb-6">Más de 150m²</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 150€</div>
+          <p class="text-sm text-secondary mb-6">Por servicio</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ +8 despachos</li>
+            <li>✓ Múltiples baños</li>
+            <li>✓ Áreas comunes</li>
+            <li>✓ Presupuesto personalizado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-muted mb-6">
+          * Precios orientativos. El precio final depende de la frecuencia, especificaciones del servicio y ubicación.
+        </p>
+        <a 
+          href="/contacto"
+          class="inline-flex items-center justify-center px-8 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+        >
+          Solicitar presupuesto personalizado
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQAccordion faqs={faqs} />
+
+  <!-- Testimonial Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Lo que dicen nuestros clientes
+        </h2>
+      </div>
+      
+      <TestimonialCard {...testimonial} />
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner 
+    title="¿Listo para mejorar tu ambiente de trabajo?"
+    subtitle="Contacta con nosotros y descubre cómo podemos hacer que tu oficina sea más productiva y profesional"
+    buttonText="Solicitar presupuesto para oficinas"
+    buttonLink="/contacto"
+    bgColor="bg-brand-primary"
+  />
+</Layout>

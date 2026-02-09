@@ -1,0 +1,398 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+
+// Process steps for glass cleaning
+const processSteps = [
+  {
+    number: 1,
+    title: "Evaluación y Presupuesto",
+    description: "Evaluamos el tipo de cristales, accesibilidad y métodos necesarios para realizar el trabajo de forma segura.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>`
+  },
+  {
+    number: 2,
+    title: "Preparación y Seguridad",
+    description: "Preparamos todo el equipo de seguridad, andamios o sistemas de acceso necesarios para trabajar en altura.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>`
+  },
+  {
+    number: 3,
+    title: "Limpieza Especializada",
+    description: "Limpieza profesional con productos específicos y técnicas especializadas que no dejan marcas ni rayas.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>`
+  },
+  {
+    number: 4,
+    title: "Inspección Final",
+    description: "Revisión completa del trabajo realizado y corrección de cualquier detalle para garantizar el resultado perfecto.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  }
+];
+
+// FAQs specific to glass cleaning
+const faqs = [
+  {
+    question: "¿Limpian cristales en altura y fachadas exteriores?",
+    answer: "Sí, estamos especializados en limpieza de cristales en altura. Disponemos de todos los equipos de seguridad necesarios: andamios, sistemas de acceso por cuerda, plataformas elevadoras y personal certificado para trabajos en altura. Cumplimos toda la normativa de seguridad vigente."
+  },
+  {
+    question: "¿Con qué frecuencia recomiendan la limpieza de cristales?",
+    answer: "Depende del tipo de edificio y ubicación. Para oficinas recomendamos limpieza mensual o bimensual. Para comunidades residenciales, trimestral o semestral. En zonas con alta contaminación o cerca del mar, la frecuencia debe ser mayor. Evaluamos cada caso específicamente."
+  },
+  {
+    question: "¿Qué productos utilizan y dejan marcas?",
+    answer: "Utilizamos productos profesionales específicos para cristales que no dejan marcas ni rayas. Empleamos técnicas de limpieza con agua desmineralizada y herramientas especializadas como limpiacristales profesionales y secadores de goma que garantizan un acabado perfecto."
+  },
+  {
+    question: "¿Están asegurados para trabajos en altura?",
+    answer: "Absolutamente. Disponemos de todos los seguros obligatorios incluyendo seguro de responsabilidad civil y accidentes laborales. Todo nuestro personal está certificado para trabajos en altura y utilizamos únicamente equipos homologados y revisados periódicamente."
+  }
+];
+
+// Testimonial for this service
+const testimonial = {
+  name: "Roberto Silva",
+  company: "Administrador Edificio Corporativo",
+  testimonial: "Los cristales de nuestro edificio de oficinas quedan siempre perfectos. Trabajan con total profesionalidad y seguridad, incluso en los pisos más altos. El resultado es espectacular y muy duradero.",
+  avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+  rating: 5
+};
+---
+
+<Layout 
+  title="Limpieza de Cristales Madrid - Profesionales en Altura | Limpiezas Jiménez"
+  description="Servicio especializado de limpieza de cristales y fachadas en Madrid. Trabajamos en altura con total seguridad. Cristales perfectos sin marcas. Presupuesto gratis."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-brand-primary to-brand-accent py-32">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&h=1080&fit=crop" 
+        alt="Limpieza de cristales profesional"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-brand-primary/85"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Limpieza de Cristales<br />
+          <span class="text-white/90">y Fachadas</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Cristales perfectamente limpios y sin marcas. Trabajamos en altura con total seguridad y los mejores resultados.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contacto"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-primary font-bold text-lg rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+          >
+            Solicitar presupuesto gratuito
+          </a>
+          
+          <a 
+            href="tel:+34912345678"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-brand-primary transition-all duration-300"
+          >
+            912 345 678
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Description -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">
+            Cristales Perfectos, Resultados Duraderos
+          </h2>
+          
+          <div class="space-y-6 text-secondary text-lg leading-relaxed">
+            <p>
+              Los cristales limpios no solo mejoran la <strong>estética del edificio</strong>, sino que también 
+              permiten el paso óptimo de luz natural, creando ambientes más agradables y ahorrando en iluminación 
+              artificial. En Limpiezas Jiménez somos especialistas en <strong>limpieza de cristales en altura</strong>.
+            </p>
+            
+            <p>
+              Nuestro equipo está <strong>certificado para trabajos en altura</strong> y utiliza las técnicas más 
+              avanzadas y seguras del sector. Disponemos de todo el equipamiento necesario: andamios, plataformas 
+              elevadoras, sistemas de acceso por cuerda y herramientas especializadas.
+            </p>
+            
+            <p>
+              Utilizamos productos profesionales y agua desmineralizada que garantizan un <strong>acabado perfecto 
+              sin marcas ni rayas</strong>, con resultados que duran mucho más tiempo que la limpieza convencional.
+            </p>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1542621334-a254cf47733d?w=800&h=600&fit=crop" 
+            alt="Profesional limpiando cristales en altura"
+            class="rounded-lg shadow-lg"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-brand-primary text-white p-6 rounded-lg shadow-lg">
+            <div class="text-3xl font-bold">15+</div>
+            <div class="text-sm">Años especializados</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Nuestros Servicios de Cristales
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Limpieza especializada para todo tipo de cristales y superficies acristaladas
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Fachadas de Oficinas</h3>
+          <p class="text-secondary">Limpieza completa de fachadas acristaladas de edificios corporativos y centros de negocio.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Ventanas Residenciales</h3>
+          <p class="text-secondary">Cristales de viviendas, comunidades y edificios residenciales, tanto interiores como exteriores.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 4v12l-4-2-4 2V4M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Escaparates Comerciales</h3>
+          <p class="text-secondary">Limpieza de escaparates y cristales de comercios para maximizar la visibilidad de productos.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M10.5 4L12 2l1.5 2M10.5 4H6.75a.75.75 0 00-.75.75v4.5c0 .415.336.75.75.75h10.5a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75H13.5m-3 0v2.25"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Claraboyas y Lucernarios</h3>
+          <p class="text-secondary">Acceso especializado para limpieza de claraboyas, lucernarios y cristales en cubiertas.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Mamparas y Divisiones</h3>
+          <p class="text-secondary">Limpieza de mamparas de oficina, divisiones acristaladas y paneles decorativos.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Trabajos en Altura</h3>
+          <p class="text-secondary">Especialistas en limpieza de cristales en edificios de gran altura con equipos certificados.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <ProcessSteps 
+    title="Nuestro Proceso Especializado"
+    subtitle="Metodología profesional que garantiza seguridad y resultados excepcionales"
+    steps={processSteps} 
+  />
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Ventajas de nuestro servicio especializado
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Tecnología avanzada y profesionales certificados para los mejores resultados
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Máxima Seguridad</h3>
+            <p class="text-secondary text-sm">Personal certificado y equipos homologados para trabajos en altura.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Acabado Perfecto</h3>
+            <p class="text-secondary text-sm">Técnicas profesionales que no dejan marcas, rayas ni residuos.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Resultados Duraderos</h3>
+            <p class="text-secondary text-sm">Limpieza que se mantiene limpia más tiempo gracias a nuestros métodos.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Mayor Luminosidad</h3>
+            <p class="text-secondary text-sm">Cristales perfectos permiten el paso óptimo de luz natural.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Tarifas Transparentes
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Precios competitivos según el tipo de cristales y complejidad del acceso
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Cristales Interiores</h3>
+          <p class="text-muted mb-6">Ventanas accesibles</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 1,50€</div>
+          <p class="text-sm text-secondary mb-6">Por m²</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Ventanas interiores</li>
+            <li>✓ Mamparas de oficina</li>
+            <li>✓ Sin trabajos en altura</li>
+            <li>✓ Productos incluidos</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-brand-primary relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+            Más Popular
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-4">Fachadas Estándar</h3>
+          <p class="text-muted mb-6">Hasta 3 plantas</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 2,80€</div>
+          <p class="text-sm text-secondary mb-6">Por m²</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Fachadas exteriores</li>
+            <li>✓ Trabajo con andamios</li>
+            <li>✓ Hasta 3 plantas</li>
+            <li>✓ Equipos de seguridad</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Gran Altura</h3>
+          <p class="text-muted mb-6">Más de 3 plantas</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 4,20€</div>
+          <p class="text-sm text-secondary mb-6">Por m²</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ Trabajos en altura</li>
+            <li>✓ Equipos especializados</li>
+            <li>✓ Personal certificado</li>
+            <li>✓ Presupuesto personalizado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-muted mb-6">
+          * Precios orientativos. El precio final depende de la superficie, accesibilidad y tipo de cristal.
+        </p>
+        <a 
+          href="/contacto"
+          class="inline-flex items-center justify-center px-8 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+        >
+          Solicitar presupuesto detallado
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQAccordion faqs={faqs} />
+
+  <!-- Testimonial Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Lo que dicen nuestros clientes
+        </h2>
+      </div>
+      
+      <TestimonialCard {...testimonial} />
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner 
+    title="¿Necesitas cristales perfectos?"
+    subtitle="Confía en nuestros especialistas en limpieza de cristales y trabajos en altura"
+    buttonText="Solicitar presupuesto para cristales"
+    buttonLink="/contacto"
+    bgColor="bg-brand-primary"
+  />
+</Layout>

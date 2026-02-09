@@ -1,0 +1,98 @@
+---
+export interface FAQ {
+  question: string;
+  answer: string;
+}
+
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  faqs: FAQ[];
+}
+
+const { 
+  title = "Preguntas Frecuentes",
+  subtitle = "Resolvemos tus dudas más comunes",
+  faqs 
+} = Astro.props;
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+        {title}
+      </h2>
+      <p class="text-xl text-secondary">
+        {subtitle}
+      </p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="border border-default rounded-lg overflow-hidden">
+          <button 
+            class="faq-question w-full px-6 py-4 text-left bg-white hover:bg-bg-secondary transition-colors duration-200 flex justify-between items-center focus:outline-none"
+            data-faq-index={index}
+          >
+            <span class="font-semibold text-primary pr-4">{faq.question}</span>
+            <svg 
+              class="faq-icon w-5 h-5 text-brand-primary transition-transform duration-300 flex-shrink-0" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          
+          <div 
+            class="faq-answer px-6 pb-4 text-secondary leading-relaxed hidden"
+            data-faq-content={index}
+          >
+            <div class="pt-2">
+              {faq.answer}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // FAQ Accordion functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const questions = document.querySelectorAll('.faq-question');
+    
+    questions.forEach((question) => {
+      question.addEventListener('click', function() {
+        const index = this.getAttribute('data-faq-index');
+        const content = document.querySelector(`[data-faq-content="${index}"]`);
+        const icon = this.querySelector('.faq-icon');
+        
+        // Toggle current FAQ
+        const isOpen = !content.classList.contains('hidden');
+        
+        // Close all other FAQs
+        document.querySelectorAll('.faq-answer').forEach(answer => {
+          answer.classList.add('hidden');
+        });
+        document.querySelectorAll('.faq-icon').forEach(faqIcon => {
+          faqIcon.style.transform = 'rotate(0deg)';
+        });
+        
+        // Toggle current FAQ
+        if (!isOpen) {
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.classList.add('hidden');
+          icon.style.transform = 'rotate(0deg)';
+        }
+      });
+    });
+  });
+</script>

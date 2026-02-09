@@ -1,0 +1,292 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import ProcessSteps from '../components/ProcessSteps.astro';
+import CTABanner from '../components/CTABanner.astro';
+
+// Services data
+const services = [
+  {
+    title: "Limpieza de Oficinas",
+    description: "Mantén tu espacio de trabajo impecable con nuestro servicio profesional de limpieza de oficinas. Mejora la productividad de tu equipo.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>`,
+    link: "/servicios/limpieza-oficinas",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
+  },
+  {
+    title: "Limpieza de Comunidades",
+    description: "Servicio integral de limpieza para comunidades de vecinos. Escaleras, portales, garajes y zonas comunes siempre perfectas.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"></path></svg>`,
+    link: "/servicios/limpieza-comunidades",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop"
+  },
+  {
+    title: "Limpieza de Cristales",
+    description: "Cristales perfectamente limpios y sin marcas. Trabajamos en altura con total seguridad y los mejores resultados.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>`,
+    link: "/servicios/limpieza-cristales",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&h=600&fit=crop"
+  },
+  {
+    title: "Limpieza Fin de Obra",
+    description: "Limpieza especializada post-construcción. Eliminamos todo tipo de residuos y dejamos tu espacio listo para habitar.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>`,
+    link: "/servicios/limpieza-fin-obra",
+    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop"
+  },
+  {
+    title: "Limpieza del Hogar",
+    description: "Servicio de limpieza doméstica personalizado. Tu hogar siempre perfecto sin que tengas que preocuparte de nada.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>`,
+    link: "/servicios/limpieza-hogar",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop"
+  },
+  {
+    title: "Limpieza Industrial",
+    description: "Limpieza especializada para naves industriales, almacenes y grandes superficies. Equipamiento profesional de última generación.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>`,
+    link: "/servicios/limpieza-industrial",
+    image: "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=800&h=600&fit=crop"
+  }
+];
+
+// Process steps
+const processSteps = [
+  {
+    number: 1,
+    title: "Contacto y Evaluación",
+    description: "Te visitamos sin compromiso para evaluar tus necesidades y preparar un presupuesto personalizado.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>`
+  },
+  {
+    number: 2,
+    title: "Planificación del Servicio",
+    description: "Diseñamos un plan de limpieza específico adaptado a tu espacio y horarios, con los mejores profesionales.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>`
+  },
+  {
+    number: 3,
+    title: "Ejecución y Seguimiento",
+    description: "Realizamos el servicio con la máxima calidad y realizamos controles de calidad para garantizar tu satisfacción.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  }
+];
+
+// Testimonials
+const testimonials = [
+  {
+    name: "María González",
+    company: "Edificio Gran Vía",
+    testimonial: "Llevamos más de 3 años con Limpiezas Jiménez en nuestra comunidad. Son súper profesionales y siempre dejan todo impecable. La atención al cliente es excelente.",
+    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face",
+    rating: 5
+  },
+  {
+    name: "Carlos Martín",
+    company: "Oficinas Martín & Asociados",
+    testimonial: "El servicio de limpieza de oficinas es extraordinario. Nuestro equipo trabaja en un ambiente mucho más agradable y productivo. Recomendados al 100%.",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+    rating: 5
+  },
+  {
+    name: "Ana Pérez",
+    company: "Residencial Las Torres",
+    testimonial: "Después de una reforma completa de nuestra casa, Limpiezas Jiménez hizo un trabajo increíble. Eliminaron todo el polvo y residuos. Quedó como nueva.",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+    rating: 5
+  }
+];
+---
+
+<Layout title="Limpiezas Jiménez Madrid - Empresa de Limpieza Profesional">
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-brand-primary to-brand-accent min-h-screen flex items-center">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1920&h=1080&fit=crop" 
+        alt="Servicio de limpieza profesional"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-brand-primary/85"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <div class="text-center text-white">
+        <!-- Badge -->
+        <div class="inline-flex items-center px-4 py-2 bg-white/20 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          Más de 500 clientes satisfechos
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Servicios de Limpieza<br />
+          <span class="text-white/90">Profesional en Madrid</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Más de 15 años de experiencia garantizan la calidad excepcional que tu espacio merece. 
+          Confía en los mejores profesionales de la limpieza.
+        </p>
+
+        <!-- CTA Button -->
+        <div class="space-y-4 sm:space-y-0 sm:flex sm:justify-center sm:gap-4">
+          <a 
+            href="/contacto"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-primary font-bold text-lg rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 shadow-lg"
+          >
+            Pide tu presupuesto gratis
+          </a>
+          
+          <a 
+            href="tel:+34912345678"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-brand-primary transition-all duration-300"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+            </svg>
+            912 345 678
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 bg-white" id="servicios">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Nuestros Servicios Profesionales
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Ofrecemos soluciones completas de limpieza adaptadas a cada necesidad. 
+          Calidad garantizada y los mejores profesionales del sector.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {services.map(service => (
+          <ServiceCard {...service} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          ¿Por qué elegirnos?
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          La experiencia, profesionalidad y compromiso nos convierten en la mejor opción para tus necesidades de limpieza
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="text-4xl font-bold text-brand-primary mb-2">15+</div>
+            <div class="text-lg font-semibold text-primary mb-2">Años de Experiencia</div>
+            <p class="text-secondary text-sm">Desde 2009 ofreciendo servicios de calidad excepcional</p>
+          </div>
+        </div>
+
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="text-4xl font-bold text-brand-primary mb-2">500+</div>
+            <div class="text-lg font-semibold text-primary mb-2">Clientes Satisfechos</div>
+            <p class="text-secondary text-sm">Empresas y particulares confían en nuestro trabajo</p>
+          </div>
+        </div>
+
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="text-4xl font-bold text-brand-primary mb-2">100%</div>
+            <div class="text-lg font-semibold text-primary mb-2">Garantía de Calidad</div>
+            <p class="text-secondary text-sm">Si no quedas satisfecho, repetimos el servicio sin coste</p>
+          </div>
+        </div>
+
+        <div class="text-center group hover:scale-105 transition-transform duration-300">
+          <div class="bg-white rounded-lg p-8 shadow-lg">
+            <div class="text-4xl font-bold text-brand-primary mb-2">24h</div>
+            <div class="text-lg font-semibold text-primary mb-2">Tiempo de Respuesta</div>
+            <p class="text-secondary text-sm">Te respondemos en menos de 24 horas, siempre</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <ProcessSteps steps={processSteps} />
+
+  <!-- Testimonials Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Lo que dicen nuestros clientes
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          La satisfacción de nuestros clientes es nuestra mejor carta de presentación
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {testimonials.map(testimonial => (
+          <TestimonialCard {...testimonial} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Coverage Areas Section -->
+  <section class="py-16 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Zonas de Cobertura en Madrid
+        </h2>
+        <p class="text-xl text-secondary">
+          Ofrecemos nuestros servicios en todas estas zonas de Madrid
+        </p>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-lg p-8">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 text-center">
+          {['Centro', 'Chamberí', 'Salamanca', 'Retiro', 'Arganzuela', 'Chamartín', 'Tetuán', 'Moncloa', 'Latina', 'Carabanchel', 'Usera', 'Villaverde', 'Vallecas', 'Ciudad Lineal', 'Hortaleza', 'Barajas'].map(zona => (
+            <div class="py-3 px-4 bg-bg-secondary rounded-lg hover:bg-brand-primary hover:text-white transition-colors duration-300 cursor-default">
+              <span class="font-medium">{zona}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Banner -->
+  <CTABanner 
+    title="¿Listo para tener un espacio impecable?"
+    subtitle="Contacta con nosotros hoy mismo y descubre por qué somos líderes en limpieza profesional en Madrid"
+    buttonText="Solicita tu presupuesto gratuito"
+    buttonLink="/contacto"
+    bgColor="bg-brand-primary"
+  />
+</Layout>

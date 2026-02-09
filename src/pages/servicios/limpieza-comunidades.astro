@@ -1,0 +1,398 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CTABanner from '../../components/CTABanner.astro';
+import ProcessSteps from '../../components/ProcessSteps.astro';
+import FAQAccordion from '../../components/FAQAccordion.astro';
+import TestimonialCard from '../../components/TestimonialCard.astro';
+
+// Process steps for community cleaning
+const processSteps = [
+  {
+    number: 1,
+    title: "Reunión con Administrador",
+    description: "Nos reunimos con el administrador o presidente para evaluar las necesidades específicas de la comunidad.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>`
+  },
+  {
+    number: 2,
+    title: "Plan de Limpieza Integral",
+    description: "Establecemos un cronograma detallado que incluye todas las áreas comunes y frecuencias de limpieza.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 4h.01M9 12h.01m4-.01h.01m2 0h.01M9 16h.01m4-.01h.01m2 0h.01"></path></svg>`
+  },
+  {
+    number: 3,
+    title: "Limpieza Profesional Regular",
+    description: "Ejecutamos el servicio con personal especializado en comunidades, respetando los horarios establecidos.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"></path></svg>`
+  },
+  {
+    number: 4,
+    title: "Mantenimiento y Seguimiento",
+    description: "Realizamos informes periódicos y mantenemos comunicación directa con la administración.",
+    icon: `<svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
+  }
+];
+
+// FAQs specific to community cleaning
+const faqs = [
+  {
+    question: "¿Qué zonas incluye el servicio de limpieza de comunidades?",
+    answer: "Nuestro servicio incluye: escaleras, rellanos, portales, buzones, ascensores, garajes, trasteros, patios, jardines, zonas comunes exteriores, cristales de fachada (interiores), y cualquier otra área común que especifique la comunidad."
+  },
+  {
+    question: "¿Con qué frecuencia realizan la limpieza?",
+    answer: "Ofrecemos diferentes frecuencias según las necesidades: diaria, 3 veces por semana, 2 veces por semana, semanal o quincenal. La frecuencia se adapta al tamaño de la comunidad, número de vecinos y presupuesto disponible."
+  },
+  {
+    question: "¿Cómo se gestionan las llaves y el acceso al edificio?",
+    answer: "Trabajamos con total seguridad y confianza. El administrador o presidente nos proporciona las llaves necesarias. Nuestro personal está asegurado y verificado. También podemos trabajar con códigos de acceso o sistemas de apertura automática."
+  },
+  {
+    question: "¿Qué pasa si hay alguna incidencia o problema?",
+    answer: "Tenemos comunicación directa con el administrador o presidente. Cualquier incidencia se reporta inmediatamente. Disponemos de seguro de responsabilidad civil y solucionamos cualquier problema de forma rápida y eficiente."
+  }
+];
+
+// Testimonial for this service
+const testimonial = {
+  name: "María González",
+  company: "Presidenta Edificio Gran Vía",
+  testimonial: "Llevamos más de 3 años con Limpiezas Jiménez en nuestra comunidad. Son súper profesionales y siempre dejan todo impecable. Los vecinos están encantados y la atención al cliente es excelente.",
+  avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face",
+  rating: 5
+};
+---
+
+<Layout 
+  title="Limpieza de Comunidades Madrid - Servicio Profesional | Limpiezas Jiménez"
+  description="Servicio especializado de limpieza para comunidades de vecinos en Madrid. Escaleras, portales, garajes y zonas comunes siempre perfectas. Presupuesto gratis."
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-brand-primary to-brand-accent py-32">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1920&h=1080&fit=crop" 
+        alt="Limpieza de comunidades de vecinos"
+        class="w-full h-full object-cover"
+        loading="eager"
+      />
+      <div class="absolute inset-0 bg-brand-primary/85"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center text-white">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+          Limpieza de<br />
+          <span class="text-white/90">Comunidades de Vecinos</span>
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          Servicio integral de limpieza para comunidades. Escaleras, portales, garajes y zonas comunes siempre perfectas.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="/contacto"
+            class="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-primary font-bold text-lg rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105"
+          >
+            Solicitar presupuesto gratuito
+          </a>
+          
+          <a 
+            href="tel:+34912345678"
+            class="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold text-lg rounded-lg hover:bg-white hover:text-brand-primary transition-all duration-300"
+          >
+            912 345 678
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Description -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">
+            Tu Comunidad, Siempre Impecable
+          </h2>
+          
+          <div class="space-y-6 text-secondary text-lg leading-relaxed">
+            <p>
+              Una comunidad limpia no solo mejora la <strong>calidad de vida</strong> de todos los vecinos, 
+              sino que también mantiene y aumenta el <strong>valor de las viviendas</strong>. En Limpiezas Jiménez 
+              entendemos que cada comunidad tiene sus propias características y necesidades específicas.
+            </p>
+            
+            <p>
+              Nuestro servicio especializado para <strong>comunidades de vecinos</strong> abarca desde escaleras 
+              y portales hasta garajes y zonas ajardinadas. Trabajamos con horarios que no molesten a los 
+              residentes y mantenemos siempre la máxima discreción y profesionalidad.
+            </p>
+            
+            <p>
+              Con más de 15 años de experiencia gestionando la limpieza de <strong>cientos de comunidades</strong> 
+              en Madrid, sabemos exactamente qué necesita cada espacio para estar siempre perfecto.
+            </p>
+          </div>
+        </div>
+        
+        <div class="relative">
+          <img 
+            src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop" 
+            alt="Escaleras de comunidad limpias"
+            class="rounded-lg shadow-lg"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-brand-primary text-white p-6 rounded-lg shadow-lg">
+            <div class="text-3xl font-bold">200+</div>
+            <div class="text-sm">Comunidades atendidas</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Included Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          ¿Qué incluye nuestro servicio?
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Limpieza integral de todas las zonas comunes de tu comunidad
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Escaleras y Rellanos</h3>
+          <p class="text-secondary">Barrido y fregado completo de todas las escaleras, limpieza de barandillas y rellanos.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Portales y Entrada</h3>
+          <p class="text-secondary">Limpieza del portal principal, buzones, cristales de entrada y recibidor.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM21 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Garajes y Trasteros</h3>
+          <p class="text-secondary">Barrido y limpieza de garajes, accesos a trasteros y zonas de aparcamiento.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M10.5 4L12 2l1.5 2M10.5 4H6.75a.75.75 0 00-.75.75v4.5c0 .415.336.75.75.75h10.5a.75.75 0 00.75-.75v-4.5a.75.75 0 00-.75-.75H13.5m-3 0v2.25"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Ascensores</h3>
+          <p class="text-secondary">Limpieza interior y desinfección de cabinas, espejos y botoneras de ascensores.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Patios y Jardines</h3>
+          <p class="text-secondary">Limpieza de patios interiores, jardines comunitarios y zonas ajardinadas.</p>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div class="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-brand-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-3">Gestión de Residuos</h3>
+          <p class="text-secondary">Limpieza de cubos de basura, zonas de contenedores y gestión de residuos comunitarios.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Steps -->
+  <ProcessSteps 
+    title="Cómo Trabajamos con Comunidades"
+    subtitle="Proceso especializado que garantiza una gestión eficiente y resultados excepcionales"
+    steps={processSteps} 
+  />
+
+  <!-- Benefits Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Ventajas para tu Comunidad
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Mucho más que limpieza: valor añadido para toda la comunidad
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Revalorización</h3>
+            <p class="text-secondary text-sm">Una comunidad limpia aumenta el valor de todas las viviendas.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Satisfacción Vecinal</h3>
+            <p class="text-secondary text-sm">Mejora la convivencia y satisfacción de todos los vecinos.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Ambiente Saludable</h3>
+            <p class="text-secondary text-sm">Entorno más higiénico y saludable para toda la familia.</p>
+          </div>
+        </div>
+
+        <div class="text-center group">
+          <div class="bg-bg-secondary rounded-lg p-8 shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+            <div class="w-16 h-16 bg-brand-primary rounded-full mx-auto mb-4 flex items-center justify-center">
+              <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-primary mb-3">Gestión Sin Preocupaciones</h3>
+            <p class="text-secondary text-sm">Administración simplificada y comunicación directa con nosotros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Tarifas Adaptadas a tu Comunidad
+        </h2>
+        <p class="text-xl text-secondary max-w-3xl mx-auto">
+          Precios competitivos basados en el tamaño y características de la comunidad
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Comunidad Pequeña</h3>
+          <p class="text-muted mb-6">Hasta 20 vecinos</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 180€</div>
+          <p class="text-sm text-secondary mb-6">Al mes</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ 2 servicios semanales</li>
+            <li>✓ Escaleras y portal</li>
+            <li>✓ Ascensor</li>
+            <li>✓ Productos incluidos</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center border-2 border-brand-primary relative">
+          <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-brand-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+            Más Popular
+          </div>
+          <h3 class="text-xl font-semibold text-primary mb-4">Comunidad Mediana</h3>
+          <p class="text-muted mb-6">20-50 vecinos</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 320€</div>
+          <p class="text-sm text-secondary mb-6">Al mes</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ 3 servicios semanales</li>
+            <li>✓ Escaleras y portales</li>
+            <li>✓ Ascensores y garaje</li>
+            <li>✓ Zonas comunes</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg p-8 text-center">
+          <h3 class="text-xl font-semibold text-primary mb-4">Comunidad Grande</h3>
+          <p class="text-muted mb-6">Más de 50 vecinos</p>
+          <div class="text-3xl font-bold text-brand-primary mb-2">Desde 480€</div>
+          <p class="text-sm text-secondary mb-6">Al mes</p>
+          <ul class="text-sm text-secondary space-y-2 mb-8">
+            <li>✓ 5 servicios semanales</li>
+            <li>✓ Servicio integral</li>
+            <li>✓ Jardines y patios</li>
+            <li>✓ Presupuesto personalizado</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <p class="text-muted mb-6">
+          * Precios orientativos. El precio final depende del número de vecinos, superficie y servicios específicos.
+        </p>
+        <a 
+          href="/contacto"
+          class="inline-flex items-center justify-center px-8 py-3 bg-brand-primary text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+        >
+          Solicitar presupuesto para tu comunidad
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <FAQAccordion faqs={faqs} />
+
+  <!-- Testimonial Section -->
+  <section class="py-20 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-4">
+          Lo que dicen los administradores
+        </h2>
+      </div>
+      
+      <TestimonialCard {...testimonial} />
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <CTABanner 
+    title="¿Quieres que tu comunidad esté siempre perfecta?"
+    subtitle="Únete a las más de 200 comunidades que ya confían en nuestro servicio profesional"
+    buttonText="Solicitar presupuesto para comunidad"
+    buttonLink="/contacto"
+    bgColor="bg-brand-primary"
+  />
+</Layout>

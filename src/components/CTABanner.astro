@@ -1,0 +1,76 @@
+---
+export interface Props {
+  title?: string;
+  subtitle?: string;
+  buttonText?: string;
+  buttonLink?: string;
+  phoneNumber?: string;
+  bgColor?: string;
+  className?: string;
+}
+
+const { 
+  title = "¿Necesitas un presupuesto sin compromiso?",
+  subtitle = "Contacta con nosotros y te responderemos en menos de 24 horas",
+  buttonText = "Pide tu presupuesto gratis",
+  buttonLink = "/contacto",
+  phoneNumber = "912 345 678",
+  bgColor = "bg-brand-primary",
+  className = ""
+} = Astro.props;
+---
+
+<section class={`${bgColor} ${className}`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+    <div class="text-center">
+      <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+        {title}
+      </h2>
+      <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
+        {subtitle}
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          href={buttonLink}
+          class="inline-flex items-center justify-center px-8 py-3 bg-white text-brand-primary font-semibold rounded-lg hover:bg-gray-50 transition-all duration-300 hover:scale-105 min-w-[200px]"
+        >
+          {buttonText}
+        </a>
+        
+        <div class="flex items-center text-white">
+          <span class="mr-2">o llámanos:</span>
+          <a 
+            href={`tel:+34${phoneNumber.replace(/\s/g, '')}`}
+            class="font-bold text-xl hover:underline"
+          >
+            {phoneNumber}
+          </a>
+        </div>
+      </div>
+      
+      <div class="mt-6 text-white/80 text-sm">
+        <div class="flex items-center justify-center space-x-6">
+          <div class="flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Respuesta en 24h</span>
+          </div>
+          <div class="flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Sin compromiso</span>
+          </div>
+          <div class="flex items-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Presupuesto gratuito</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

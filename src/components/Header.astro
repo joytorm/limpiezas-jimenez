@@ -1,0 +1,146 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm border-b border-default">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="/" class="text-2xl font-bold text-brand-primary">
+          Limpiezas Jiménez
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a 
+          href="/" 
+          class={`text-sm font-medium transition-colors hover:text-brand-primary ${currentPath === '/' ? 'text-brand-primary' : 'text-secondary'}`}
+        >
+          Inicio
+        </a>
+        
+        <!-- Services Dropdown -->
+        <div class="relative group">
+          <button class="text-sm font-medium text-secondary hover:text-brand-primary transition-colors flex items-center">
+            Servicios
+            <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="absolute left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-default opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div class="p-2">
+              <a href="/servicios/limpieza-oficinas" class="block px-4 py-2 text-sm text-secondary hover:bg-bg-secondary hover:text-brand-primary rounded transition-colors">
+                Limpieza de Oficinas
+              </a>
+              <a href="/servicios/limpieza-comunidades" class="block px-4 py-2 text-sm text-secondary hover:bg-bg-secondary hover:text-brand-primary rounded transition-colors">
+                Limpieza de Comunidades
+              </a>
+              <a href="/servicios/limpieza-cristales" class="block px-4 py-2 text-sm text-secondary hover:bg-bg-secondary hover:text-brand-primary rounded transition-colors">
+                Limpieza de Cristales
+              </a>
+              <a href="/servicios/limpieza-fin-obra" class="block px-4 py-2 text-sm text-secondary hover:bg-bg-secondary hover:text-brand-primary rounded transition-colors">
+                Limpieza Fin de Obra
+              </a>
+              <a href="/servicios/limpieza-hogar" class="block px-4 py-2 text-sm text-secondary hover:bg-bg-secondary hover:text-brand-primary rounded transition-colors">
+                Limpieza del Hogar
+              </a>
+              <a href="/servicios/limpieza-industrial" class="block px-4 py-2 text-sm text-secondary hover:bg-bg-secondary hover:text-brand-primary rounded transition-colors">
+                Limpieza Industrial
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <a 
+          href="/sobre-nosotros" 
+          class={`text-sm font-medium transition-colors hover:text-brand-primary ${currentPath === '/sobre-nosotros' ? 'text-brand-primary' : 'text-secondary'}`}
+        >
+          Sobre Nosotros
+        </a>
+        
+        <a 
+          href="/contacto" 
+          class={`text-sm font-medium transition-colors hover:text-brand-primary ${currentPath === '/contacto' ? 'text-brand-primary' : 'text-secondary'}`}
+        >
+          Contacto
+        </a>
+
+        <!-- CTA Button -->
+        <a 
+          href="tel:+34912345678" 
+          class="bg-brand-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-all duration-300 hover:scale-105"
+        >
+          912 345 678
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-secondary hover:text-brand-primary transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="md:hidden hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-default">
+        <a href="/" class="block px-3 py-2 text-base font-medium text-secondary hover:text-brand-primary hover:bg-bg-secondary rounded transition-colors">
+          Inicio
+        </a>
+        
+        <div class="px-3 py-2">
+          <p class="text-sm font-medium text-muted mb-2">Servicios</p>
+          <div class="space-y-1 ml-4">
+            <a href="/servicios/limpieza-oficinas" class="block py-1 text-sm text-secondary hover:text-brand-primary transition-colors">
+              Limpieza de Oficinas
+            </a>
+            <a href="/servicios/limpieza-comunidades" class="block py-1 text-sm text-secondary hover:text-brand-primary transition-colors">
+              Limpieza de Comunidades
+            </a>
+            <a href="/servicios/limpieza-cristales" class="block py-1 text-sm text-secondary hover:text-brand-primary transition-colors">
+              Limpieza de Cristales
+            </a>
+            <a href="/servicios/limpieza-fin-obra" class="block py-1 text-sm text-secondary hover:text-brand-primary transition-colors">
+              Limpieza Fin de Obra
+            </a>
+            <a href="/servicios/limpieza-hogar" class="block py-1 text-sm text-secondary hover:text-brand-primary transition-colors">
+              Limpieza del Hogar
+            </a>
+            <a href="/servicios/limpieza-industrial" class="block py-1 text-sm text-secondary hover:text-brand-primary transition-colors">
+              Limpieza Industrial
+            </a>
+          </div>
+        </div>
+
+        <a href="/sobre-nosotros" class="block px-3 py-2 text-base font-medium text-secondary hover:text-brand-primary hover:bg-bg-secondary rounded transition-colors">
+          Sobre Nosotros
+        </a>
+        
+        <a href="/contacto" class="block px-3 py-2 text-base font-medium text-secondary hover:text-brand-primary hover:bg-bg-secondary rounded transition-colors">
+          Contacto
+        </a>
+
+        <div class="px-3 pt-2">
+          <a href="tel:+34912345678" class="block w-full text-center bg-brand-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-opacity-90 transition-colors">
+            912 345 678
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  mobileMenuButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>

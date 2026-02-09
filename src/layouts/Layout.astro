@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const { title, description = "Limpiezas Jiménez Madrid - Servicios profesionales de limpieza en Madrid. Más de 15 años de experiencia.", ogImage = "/og-image.jpg" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="limpieza profesional madrid, servicios limpieza, empresa limpieza madrid, limpiezas jiménez" />
+    <meta name="author" content="Limpiezas Jiménez" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+    
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Limpiezas Jiménez",
+        "description": "Empresa de limpieza profesional en Madrid con más de 15 años de experiencia",
+        "url": "https://limpiezasjimenez.es",
+        "telephone": "+34912345678",
+        "email": "info@limpiezasjimenez.es",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle Gran Vía 28",
+          "addressLocality": "Madrid",
+          "postalCode": "28013",
+          "addressCountry": "ES"
+        },
+        "openingHours": [
+          "Mo-Fr 07:00-21:00",
+          "Sa 08:00-14:00"
+        ],
+        "founder": {
+          "@type": "Person",
+          "name": "Limpiezas Jiménez"
+        },
+        "foundingDate": "2009",
+        "areaServed": "Madrid",
+        "serviceType": ["Limpieza de oficinas", "Limpieza de comunidades", "Limpieza de cristales", "Limpieza fin de obra", "Limpieza del hogar", "Limpieza industrial"]
+      }
+    </script>
+  </head>
+  <body class="bg-white">
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
